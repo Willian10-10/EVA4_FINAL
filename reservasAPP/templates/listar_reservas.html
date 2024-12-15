@@ -1,48 +1,92 @@
-<!-- listar_reservas.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Reservas</title>
+    <title>Lista de Reservas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .container {
+            text-align: center;
+            margin: 2rem;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .btn-eliminar {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Reservas</h1>
+        <h1>Lista de Reservas</h1>
     </header>
-    <section>
-        <h2>Lista de Reservas</h2>
+    
+    <div class="container">
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Teléfono</th>
                     <th>Fecha</th>
                     <th>Hora</th>
-                    <th>Cantidad de Personas</th>
-                    <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for reserva in reservas %}
                     <tr>
+                        <td>{{ reserva.id }}</td>
                         <td>{{ reserva.nombre }}</td>
                         <td>{{ reserva.telefono }}</td>
                         <td>{{ reserva.fecha }}</td>
                         <td>{{ reserva.hora }}</td>
-                        <td>{{ reserva.cantidad_personas }}</td>
-                        <td>{{ reserva.estado }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="6">No hay reservas disponibles.</td>
+                        <td>
+                            <a href="{% url 'eliminar_reserva' reserva.id %}" class="btn-eliminar">Eliminar</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </section>
+    </div>
+
     <footer>
-        <p>© 2024 Sistema de Reservas</p>
+        <p>© 2024 Sistema de Reservas - Desarrollado por Tú</p>
     </footer>
 </body>
 </html>

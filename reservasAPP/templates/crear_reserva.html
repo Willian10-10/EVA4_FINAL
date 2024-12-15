@@ -1,25 +1,52 @@
-<!-- crear_reserva.html -->
+<!-- reservas/templates/reservas/crear_reserva.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Reserva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
 </head>
 <body>
-    <header>
-        <h1>Crear Nueva Reserva</h1>
-    </header>
-    <section>
-        <h2>Formulario de Reserva</h2>
+    <div class="container">
+        <h1 class="my-4">Crear Nueva Reserva</h1>
+
+        <!-- Formulario de Reserva -->
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}  <!-- Muestra el formulario como párrafos -->
-            <button type="submit">Guardar Reserva</button>
+            
+            <!-- Muestra los campos del formulario -->
+            {{ form.as_p }}
+            
+            <!-- Botón para enviar el formulario -->
+            <button type="submit" class="btn btn-primary mt-3">Crear Reserva</button>
         </form>
-    </section>
-    <footer>
-        <p>© 2024 Sistema de Reservas</p>
-    </footer>
+
+        <!-- Mostrar los errores del formulario -->
+        {% if form.errors %}
+            <div class="alert alert-danger mt-3">
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            var cantidadPersonas = document.querySelector('input[name="cantidad_personas"]').value;
+            
+            if (cantidadPersonas < 1 || cantidadPersonas > 15) {
+                event.preventDefault(); // Evita que el formulario se envíe
+                alert('La cantidad de personas debe estar entre 1 y 15.');
+            }
+        });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

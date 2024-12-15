@@ -1,7 +1,9 @@
+# reservasAPP/api_urls.py
+
 from django.urls import path
-from . import api_views
+from .api_views import ReservaList, ReservaDetail
 
 urlpatterns = [
-    path('reservas/', api_views.ReservaListCreateView.as_view(), name='reservas_api'),
-    path('reservas/<int:pk>/', api_views.ReservaRetrieveUpdateDeleteView.as_view(), name='reserva_detail_api'),
+    path('reservas/', ReservaList.as_view(), name='reservas_list'),  # Ruta para obtener todas las reservas o crear una nueva
+    path('reservas/<int:id>/', ReservaDetail.as_view(), name='reserva_detail'),  # Ruta para obtener, editar o eliminar una reserva por ID
 ]
