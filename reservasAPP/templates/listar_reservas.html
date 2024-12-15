@@ -1,0 +1,48 @@
+<!-- listar_reservas.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Reservas</title>
+</head>
+<body>
+    <header>
+        <h1>Reservas</h1>
+    </header>
+    <section>
+        <h2>Lista de Reservas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Cantidad de Personas</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                    <tr>
+                        <td>{{ reserva.nombre }}</td>
+                        <td>{{ reserva.telefono }}</td>
+                        <td>{{ reserva.fecha }}</td>
+                        <td>{{ reserva.hora }}</td>
+                        <td>{{ reserva.cantidad_personas }}</td>
+                        <td>{{ reserva.estado }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">No hay reservas disponibles.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <footer>
+        <p>© 2024 Sistema de Reservas</p>
+    </footer>
+</body>
+</html>

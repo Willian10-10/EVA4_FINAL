@@ -1,0 +1,25 @@
+<!-- crear_reserva.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Reserva</title>
+</head>
+<body>
+    <header>
+        <h1>Crear Nueva Reserva</h1>
+    </header>
+    <section>
+        <h2>Formulario de Reserva</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Muestra el formulario como párrafos -->
+            <button type="submit">Guardar Reserva</button>
+        </form>
+    </section>
+    <footer>
+        <p>© 2024 Sistema de Reservas</p>
+    </footer>
+</body>
+</html>

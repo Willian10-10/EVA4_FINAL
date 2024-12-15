@@ -47,9 +47,11 @@
         <h1>Bienvenido a Reservas</h1>
     </header>
     <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Ver Reservas</a>
-        <a href="#">Agregar Reserva</a>
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'listar_reservas' %}">Ver Reservas</a>
+        <a href="{% url 'crear_reserva' %}">Agregar Reserva</a>
+
+        
     </nav>
     <section>
         <h2>Gestión de Reservas</h2>
