@@ -24,3 +24,5 @@ class Reserva(models.Model):
     
     def __str__(self):
         return f"Reserva de {self.nombre} para {self.cantidad_personas} personas el {self.fecha} a las {self.hora}."
+
+
