@@ -21,8 +21,8 @@ from reservasAPP import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('reservas/', include('reservasAPP.urls')),  # Enlaza las URLs de la app reservasAPP
-    path('api/', include('reservasAPP.api_urls')),  # Enlaza las URLs de la API (si la tienes separada)
-    path('', views.index, name='index'),  # Página principal
+    path('reservas/', include('reservasAPP.urls')),  
+    path('api/', include('reservasAPP.api_urls')),  
+    path('', views.index, name='index'), 
 ]
 
